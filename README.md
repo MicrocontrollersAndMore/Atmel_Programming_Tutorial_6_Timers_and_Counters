@@ -1,1 +1,0 @@
-# Atmel_Programming_Tutorial_6_Timers_and_Counters
