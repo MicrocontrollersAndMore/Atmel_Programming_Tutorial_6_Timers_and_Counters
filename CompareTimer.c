@@ -31,8 +31,8 @@ int main(void) {
 	bit 3 = 0
 	bit 2 = 0
 	
-	WGM01 = 0     CTC (Clear Timer on Compare match) mode, see TCCR0B also
-	WGM00 = 1     timer will count up to value in OCR0A, then signal timer 0 compare interrupt
+	WGM01 = 1     CTC (Clear Timer on Compare match) mode, see TCCR0B also
+	WGM00 = 0     timer will count up to value in OCR0A, then signal timer 0 compare interrupt
 	*/
 	TCCR0A = 0b00000010;
 	
