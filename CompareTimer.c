@@ -92,7 +92,7 @@ int main(void) {
 	bit 2 = 0
 	
 	WGM11 = 0     CTC (Clear Timer on Compare match) mode, see TCCR1B also
-	WGM10 = 0     TCNT1H/TCNT1L will count up to value in OCR1A, then signal timer 0 compare interrupt
+	WGM10 = 0     TCNT1H/TCNT1L will count up to value in OCR1AH/OCR1AL, then signal timer 1 compare interrupt
 	*/
 	TCCR1A = 0b00000000;
 	
