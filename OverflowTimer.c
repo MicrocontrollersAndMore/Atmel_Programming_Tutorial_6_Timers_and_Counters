@@ -32,7 +32,7 @@ int main(void) {
 	bit 2 = 0
 	
 	WGM01 = 0     "Normal" timer/counter mode
-	WGM00 = 1
+	WGM00 = 0
 	*/
 	TCCR0A = 0b00000000;
 	
