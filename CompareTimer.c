@@ -4,7 +4,7 @@
 // LED on PC5 (pin 28)
 
 #ifndef F_CPU					// if F_CPU was not defined in Project -> Properties
-#define F_CPU 1000000UL			// define it now as 1 GHz unsigned long
+#define F_CPU 1000000UL			// define it now as 1 MHz unsigned long
 #endif
 
 #include <avr/io.h>				// this is always included in AVR programs
@@ -32,7 +32,7 @@ int main(void) {
 	bit 2 = 0
 	
 	WGM01 = 1     CTC (Clear Timer on Compare match) mode, see TCCR0B also
-	WGM00 = 0     timer will count up to value in OCR0A, then signal timer 0 compare interrupt
+	WGM00 = 0     TCNT0 will count up to value in OCR0A, then signal timer 0 compare interrupt
 	*/
 	TCCR0A = 0b00000010;
 	
@@ -92,7 +92,7 @@ int main(void) {
 	bit 2 = 0
 	
 	WGM11 = 0     CTC (Clear Timer on Compare match) mode, see TCCR1B also
-	WGM10 = 0
+	WGM10 = 0     TCNT1H/TCNT1L will count up to value in OCR1A, then signal timer 0 compare interrupt
 	*/
 	TCCR1A = 0b00000000;
 	
@@ -143,14 +143,14 @@ int main(void) {
 	name          -        -      ICIE1      -       -     OCIE1B    OCIE1A    TOIE1
 	set to        0        0        0        0       0       0         1         0
 	
-	bit 7 = 0     don't use Force Output Compare A
+	bit 7 = 0
 	bit 6 = 0
-	ICIE1 = 0
+	ICIE1 = 0     don't use Input Capture Interrupt Enable
 	bit 4 = 0
 	bit 3 = 0
 	OCIE1B = 0    don't enable Timer/Counter 1 Output Compare Match B Interrupt
-	OCIE1A = 1    don't enable Timer/Counter 1 Output Compare Match A Interrupt Enable
-	TOIE1 = 0     enable Timer/Counter 1 Overflow Interrupt
+	OCIE1A = 1    enable Timer/Counter 1 Output Compare Match A Interrupt Enable
+	TOIE1 = 0     don't enable Timer/Counter 1 Overflow Interrupt
 	*/
 	TIMSK1 = 0b00000010;
 	
@@ -161,11 +161,11 @@ int main(void) {
 	OCR1AH = 0b10000000;
 	OCR1AL = 0b00000000;
 	
-	sei();				// enable interrupts
+	sei();					// enable interrupts
 	
 	while (1) {	}
 	
-	return(0);					// should never get here, this is to prevent a compiler warning
+	return(0);				// should never get here, this is to prevent a compiler warning
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

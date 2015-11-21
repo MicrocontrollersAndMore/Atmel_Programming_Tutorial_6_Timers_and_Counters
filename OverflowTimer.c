@@ -4,7 +4,7 @@
 // LED on PC5 (pin 28)
 
 #ifndef F_CPU					// if F_CPU was not defined in Project -> Properties
-#define F_CPU 1000000UL			// define it now as 1 GHz unsigned long
+#define F_CPU 1000000UL			// define it now as 1 MHz unsigned long
 #endif
 
 #include <avr/io.h>				// this is always included in AVR programs
@@ -143,9 +143,9 @@ int main(void) {
 	name          -        -      ICIE1      -       -     OCIE1B    OCIE1A    TOIE1
 	set to        0        0        0        0       0       0         0         1
 	
-	bit 7 = 0     don't use Force Output Compare A
+	bit 7 = 0
 	bit 6 = 0
-	ICIE1 = 0
+	ICIE1 = 0     don't use Input Capture Interrupt Enable
 	bit 4 = 0
 	bit 3 = 0
 	OCIE1B = 0    don't enable Timer/Counter 1 Output Compare Match B Interrupt
